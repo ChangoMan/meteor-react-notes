@@ -5,6 +5,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Notes } from '../api/notes';
 import NoteListHeader from './NoteListHeader';
 import NoteListItem from './NoteListItem';
+import NoteListEmptyItem from './NoteListEmptyItem';
 
 export const NoteList = (props) => {
     renderNotes = () => {
@@ -15,6 +16,7 @@ export const NoteList = (props) => {
     return (
         <div>
             <NoteListHeader />
+            { props.notes.length === 0 ? <NoteListEmptyItem /> : undefined }
             NoteList: { props.notes.length }
             <hr />
             { this.renderNotes() }
